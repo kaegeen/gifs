@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIF Downloader</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-500 p-4 text-center">
+        <h1 class="text-white text-2xl font-bold">GIF Downloader</h1>
+    </nav>
+
+    <!-- GIF Download Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold mb-8">Download GIFs Easily</h2>
+            <div class="max-w-lg mx-auto bg-white shadow-lg rounded-lg p-8">
+                <label for="gifURL" class="block text-gray-700 font-bold mb-2">Enter GIF URL</label>
+                <input type="text" id="gifURL" class="w-full p-3 border rounded-lg mb-4" placeholder="Enter GIF link">
+                
+                <button onclick="downloadGIF()" class="w-full px-4 py-2 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600">
+                    Download GIF
+                </button>
+            </div>
+            <div id="gifPreview" class="mt-8 max-w-lg mx-auto bg-white shadow-lg p-6 rounded-lg hidden">
+                <h3 class="text-xl font-bold">GIF Preview</h3>
+                <img id="gifImage" class="w-full mt-4" src="" alt="GIF Preview">
+                <a id="downloadLink" class="mt-4 inline-block px-4 py-2 bg-green-500 text-white font-bold rounded-lg hover:bg-green-600" download>Download Now</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function downloadGIF() {
+            const url = document.getElementById('gifURL').value.trim();
+            
+            if (!url) {
+                alert('Please enter a valid GIF URL.');
+                return;
+            }
+            
+            document.getElementById('gifImage').src = url;
+            document.getElementById('downloadLink').href = url;
+            document.getElementById('downloadLink').setAttribute('download', 'downloaded.gif');
+            document.getElementById('gifPreview').classList.remove('hidden');
+        }
+    </script>
+
+    <!-- Footer -->
+    <footer class="bg-blue-500 text-white text-center py-4">
+        <p>&copy; 2025 GIF Downloader. All rights reserved.</p>
+    </footer>
+</body>
+</html>
